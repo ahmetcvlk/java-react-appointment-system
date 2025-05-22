@@ -1,5 +1,6 @@
 package com.fitness.randevu.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class Appointment {
 
     // Randevuya bağlı birden fazla gün-saat olabilir
     @OneToMany(mappedBy = "appointment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference // ekle
     private List<AppointmentTime> times = new ArrayList<>();
 
     // Getter ve Setter'lar

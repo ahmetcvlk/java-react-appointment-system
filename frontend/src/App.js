@@ -7,6 +7,10 @@ import HomePage from './pages/HomePage';
 import StudentDashboard from './pages/StudentDashboard';
 import OfficerDashboard from './pages/OfficerDashboard';
 import AppointmentPage from './pages/AppointmentPage';
+import StudentAppointments from './pages/StudentAppointments'; // 
+import OfficerAppointments from './pages/OfficerAppointments'; 
+import UserList from './pages/UserList'; 
+import AppointmentSummary from './pages/AppointmentSummary';
 
 function App() {
   return (
@@ -18,6 +22,11 @@ function App() {
         <Route path="/student" component={StudentDashboard} />
         <Route path="/officer" component={OfficerDashboard} />
         <Route path="/appointment" component={AppointmentPage} />
+        <Route path="/student-appointments" component={StudentAppointments} />
+        <Route path="/officer-appointments" component={OfficerAppointments} />
+        <Route path="/user-list" component={UserList} />
+        <Route path="/appointment-summary" component={AppointmentSummary} />
+
       </Switch>
     </Router>
   );

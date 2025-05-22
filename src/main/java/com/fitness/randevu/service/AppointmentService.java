@@ -24,60 +24,29 @@ public class AppointmentService {
         return appointmentRepository.findAll();
     }
 
-    // Belirli ID'li randevuyu getir
-    public Optional<Appointment> getAppointmentById(int id) {
-        return appointmentRepository.findById(id);
+    //Belirli kullanıcıya ait randevuları getir
+    public List<Appointment> getAppointmentsByUserId(Long userId) {
+        return appointmentRepository.findByUserId(userId);
     }
 
-    // Yeni randevu oluştur
-    public Appointment saveAppointment(Appointment appointment) {
+    //Verilen appointment id'ye göre tek bir randevu getir
+    public Appointment getAppointmentById(Long id) {
+        return appointmentRepository.findById(id).orElse(null);
+    }
+
+    //Bir randevuyu kaydeder
+    public void saveAppointment(Appointment appointment) {
+        appointmentRepository.save(appointment);
+    }
+
+    //Zamanlarla beraber bir randevuyu kaydeder
+    public Appointment createAppointmentWithTimes(Appointment appointment) {
+        for (AppointmentTime time : appointment.getTimes()) {
+            time.setAppointment(appointment);
+        }
         return appointmentRepository.save(appointment);
     }
 
-    // Randevuyu sil
-    public void deleteAppointment(int id) {
-        appointmentRepository.deleteById(id);
-    }
 
-    // Bir randevuya ait zamanları getir
-    public List<AppointmentTime> getAppointmentTimesByAppointmentId(int appointmentId) {
-        Optional<Appointment> appointmentOpt = appointmentRepository.findById(appointmentId);
-        return appointmentOpt.map(Appointment::getTimes).orElse(null);
-    }
-
-    // Bir randevuya zaman ekle
-    public AppointmentTime addTimeToAppointment(AppointmentTime appointmentTime) {
-        return appointmentTimeRepository.save(appointmentTime);
-    }
-
-    public boolean approveAppointment(int appointmentId) {
-        Optional<Appointment> appointmentOpt = appointmentRepository.findById(appointmentId);
-        if (appointmentOpt.isPresent()) {
-            Appointment appointment = appointmentOpt.get();
-            appointment.setApproved(true);
-            appointmentRepository.save(appointment);
-            return true;
-        }
-        return false;
-    }
-
-
-    // Kullanıcıdan gelen bir randevuyu, içindeki zaman bilgileriyle birlikte kaydet
-    public Appointment createAppointmentWithTimes(Appointment appointment, List<AppointmentTime> times) {
-        // Önce randevuyu veritabanına kaydediyoruz (id oluşturulsun diye)
-        Appointment savedAppointment = appointmentRepository.save(appointment);
-
-        // Her bir zaman nesnesine bu randevuyu set ediyoruz ve kaydediyoruz
-        for (AppointmentTime time : times) {
-            time.setAppointment(savedAppointment); // foreign key ilişkisi için gerekli
-            appointmentTimeRepository.save(time);
-        }
-
-        // Randevu nesnesine zaman listesini ekliyoruz
-        savedAppointment.setTimes(times);
-
-        // Sonuç olarak kaydedilmiş randevuyu geri döndürüyoruz
-        return savedAppointment;
-    }
 
 }

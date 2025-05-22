@@ -1,0 +1,87 @@
+.calendar-container {
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.calendar-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.calendar-grid {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+}
+
+.calendar-column {
+  flex: 1;
+  min-width: 120px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.calendar-date {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #1976d2;
+}
+
+.time-slot {
+  display: block;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: #ffffff;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.time-slot:hover {
+  background-color: #e3f2fd;
+}
+
+.time-slot.selected {
+  background-color: #1976d2;
+  color: white;
+  font-weight: bold;
+}
+
+.confirm-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #2e7d32;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #1b5e20;
+}
+
+
+.back {
+  margin-left: 5px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back:hover {
+  background-color: #0056b3;
+}

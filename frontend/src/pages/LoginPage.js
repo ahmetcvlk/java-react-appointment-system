@@ -22,6 +22,7 @@ function LoginPage() {
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('user', JSON.stringify(data));
+        localStorage.setItem('userId', data.id); // 🔹 Buraya ekledik
 
         if (data.role === 'STUDENT') {
           history.push('/student');

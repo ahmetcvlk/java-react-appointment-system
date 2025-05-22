@@ -1,5 +1,6 @@
 package com.fitness.randevu.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -22,6 +23,7 @@ public class AppointmentTime {
     // Bu zaman hangi randevuya ait?
     @ManyToOne
     @JoinColumn(name = "appointment_id") // appointment_time tablosunda FK olacak
+    @JsonBackReference // ekle
     private Appointment appointment;
 
     // --- Constructors ---

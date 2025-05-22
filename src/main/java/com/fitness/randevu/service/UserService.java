@@ -33,4 +33,10 @@ public class UserService {
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }
+
+    //emaile göre kullanıcı getir
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
 }

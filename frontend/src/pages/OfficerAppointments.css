@@ -1,0 +1,34 @@
+.officer-appointments {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.appointment-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.appointment-card h3 {
+  margin-top: 0;
+}
+
+.approve-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.approve-button:hover {
+  background-color: #45a049;
+}
+
+.approved-text {
+  color: green;
+  font-weight: bold;
+}
